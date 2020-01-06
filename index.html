@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,49 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic-Tac-Toe</h1>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm box"></div>
+            <div class="col-sm box"></div>
+            <div class="col-sm box"></div>
+          </div>
+        <div class="row">
+            <div class="col-sm box"></div>
+            <div class="col-sm box"></div>
+            <div class="col-sm box"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm box"></div>
+            <div class="col-sm box"></div>
+            <div class="col-sm box"></div>
+        </div>
+      </div>
+          <p id='message'></p>
+              <form id="sign-up">
+                <fieldset>
+                  <legend>Sign Up</legend>
+                  <input name="credentials[email]" type='email' placeholder='Email'/>
+                  <input name="credentials[password]" type='password' placeholder='Password'/>
+                  <input name="credentials[password_confirmation]" type='password' placeholder='Password Confirmation'/>
+                  <input type='submit' value='Sign up'/>
+                </fieldset>
+              </form>
+            <form id="sign-in">
+                <fieldset>
+                  <legend>Sign In</legend>
+                  <input name="credentials[email]" type='email' placeholder='Email'/>
+                  <input name="credentials[password]" type='password' placeholder='Password'/>
+                  <input type='submit' value='Sign in'/>
+                </fieldset>
+            </form>
+            <form id="change-password">
+              <fieldset>
+                <legend>Change Password</legend>
+                <input name="passwords[old]" type='password' placeholder='Old Password'/>
+                <input name="passwords[new]" type='password' placeholder='New Password'/>
+                <input type='submit' value='Update'/>
+             </fieldset>
+           </form>
     </body>
 </html>
