@@ -8,6 +8,7 @@ const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('submit', onSignOut)
 }
 
 const onSignUp = function (event) {
@@ -46,6 +47,19 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+  console.log(data)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  const form = event.target
+  // get the data from the form
+  const data = getFormFields(form)
+  // send the data to the API
+  // handle the API response
+  api.signOut(data)
+    .then(ui.onSignOutSuccess)
+    .catch(ui.onSignOutFailure)
   console.log(data)
 }
 

@@ -28,11 +28,24 @@ const changePasswordFailure = function () {
   $('#message').text('Change password failed!')
 }
 
+const onSignOutSuccess = function (response) {
+  $('#message').text('Successfully signed out!')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  store.user = null
+}
+
+const onSignOutFailure = function () {
+  $('#message').text('Sign out failed!')
+}
+
 module.exports = {
   onSignUpFailure,
   onSignUpSuccess,
   onSignInSuccess,
   onSignInFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  onSignOutSuccess,
+  onSignOutFailure
 }
