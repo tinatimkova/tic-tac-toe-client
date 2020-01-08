@@ -26,8 +26,8 @@ const switchPlayers = function () {
 
 const onClickBox = function (event) {
   event.preventDefault()
-  checkForWinner()
   if (!this.innerHTML) {
+    checkForWinner()
     switchPlayers()
     this.innerHTML = currentPlayer
     const getUserInput = this.id
@@ -40,22 +40,56 @@ const onClickBox = function (event) {
 
 const board = ['', '', '', '', '', '', '', '', '']
 
-const winPositions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], //rows
-              [0, 3, 6], [1, 4, 7], [2, 5, 8], //columns
-              [0, 4, 8], [6, 4, 2]] //diagonals
+// [0, 1, 2], [3, 4, 5], [6, 7, 8] rows
+// [0, 3, 6], [1, 4, 7], [2, 5, 8] columns
+// [0, 4, 8], [2, 4, 6] diagonals
 
-const checkForWinner = function () {
-  // check the rows
-  if
-})
-  {
-    console.log(`${currentPlayer} won!`)
-  // check the columns
-  // check the diagonals
+const checkWinnerPositions = function (boxOne, boxTwo, boxThree) {
+  if ((boxOne === boxTwo) && (boxTwo === boxThree) && (boxThree === currentPlayer)) {
+    return 'True'
   } else {
-    console.log('Current player:' + currentPlayer)
+    return 'False'
   }
 }
+
+const checkRows = function () {
+  for (let i = 0; i < board.length; i = +3) {
+    if (checkWinnerPositions(board[i], board[i + 1], board[i + 2]) === 'True') {
+      console.log(`${currentPlayer} won!`)
+      $('#message').text(`${currentPlayer} player won!`)
+    } else {
+      return
+    }
+  }
+}
+
+const checkColumns = function () {
+  for (let i = 0; i < 3; i++) {
+    if (checkWinnerPositions(board[i], board[i + 3], board[i + 6]) === 'True') {
+      console.log(`${currentPlayer} won!`)
+      $('#message').text(`${currentPlayer} player won!`)
+    } else {
+      return
+    }
+  }
+}
+
+const checkDiagonals = function () {
+  if (checkWinnerPositions(board[0], board[4], board[8]) === 'True') {
+    console.log(`${currentPlayer} won!`)
+    $('#message').text(`${currentPlayer} player won!`)
+  } else if (checkWinnerPositions(board[2], board[4], board[6]) === 'True') {
+    console.log(`${currentPlayer} won!`)
+    $('#message').text(`${currentPlayer} player won!`)
+  }
+}
+
+const checkForWinner = function () {
+  checkRows()
+  checkColumns()
+  checkDiagonals()
+}
+
 console.log(board)
 
 module.exports = {
