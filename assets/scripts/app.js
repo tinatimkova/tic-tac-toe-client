@@ -4,6 +4,7 @@
 // const example = require('./example')
 const authEvents = require('./auth/events.js')
 const gameEvents = require('./game/events.js')
+const gameEngineEvents = require('./game/game_engine.js')
 // const gameEvents = require('./game/events.js')
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -11,5 +12,6 @@ const gameEvents = require('./game/events.js')
 $(() => {
   // your JS code goes here
   authEvents.addHandlers()
-  gameEvents.addHandlers()
+  gameEvents.addGameHandlers()
+  gameEngineEvents.addGameEngineHandlers()
 })
