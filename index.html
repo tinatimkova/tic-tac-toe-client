@@ -13,27 +13,30 @@
     </head>
     <body>
       <h1>Tic-Tac-Toe</h1>
-      <div class="container">
+      <div class="gameboard">
         <div class="row">
-            <div id ='0' class="col-sm box"></div>
-            <div id ='1' class="col-sm box"></div>
-            <div id ='2' class="col-sm box"></div>
+            <div id ='0' class="col-4"></div>
+            <div id ='1' class="col-4"></div>
+            <div id ='2' class="col-4"></div>
           </div>
         <div class="row">
-            <div id ='3' class="col-sm box"></div>
-            <div id ='4' class="col-sm box"></div>
-            <div id ='5' class="col-sm box"></div>
+            <div id ='3' class="col-4"></div>
+            <div id ='4' class="col-4"></div>
+            <div id ='5' class="col-4"></div>
         </div>
         <div class="row">
-            <div id ='6' class="col-sm box"></div>
-            <div id ='7' class="col-sm box"></div>
-            <div id ='8' class="col-sm box"></div>
+            <div id ='6' class="col-4"></div>
+            <div id ='7' class="col-4"></div>
+            <div id ='8' class="col-4"></div>
         </div>
       </div>
           <p id='message'></p>
+          <form id='reset'>
+            <input type='submit' value='Start new game'/>
+          </form>
               <form id="sign-up">
                 <fieldset>
-                  <legend>Sign Up</legend>
+                  <legend>Sign up</legend>
                   <input name="credentials[email]" type='email' placeholder='Email'/>
                   <input name="credentials[password]" type='password' placeholder='Password'/>
                   <input name="credentials[password_confirmation]" type='password' placeholder='Password Confirmation'/>
@@ -42,11 +45,16 @@
               </form>
             <form id="sign-in">
                 <fieldset>
-                  <legend>Sign In</legend>
+                  <legend>Sign in</legend>
                   <input name="credentials[email]" type='email' placeholder='Email'/>
                   <input name="credentials[password]" type='password' placeholder='Password'/>
                   <input type='submit' value='Sign in'/>
                 </fieldset>
+            </form>
+            <form>
+              <fieldset>
+                <button id = "create">Start game</button>
+              </fieldset>
             </form>
             <form id="change-password">
               <fieldset>
@@ -56,25 +64,19 @@
                 <input type='submit' value='Update'/>
              </fieldset>
            </form>
+           <form>
+             <fieldset>
+               <button id = "show">Show game</button>
+             </fieldset>
+           </form>
+           <form>
+             <fieldset>
+               <button id = "index">Get all games</button>
+             </fieldset>
+           </form>
            <form id="sign-out">
              <fieldset>
-               <legend>Sign Out</legend>
                <input type='submit' value='Sign out'/>
-            </fieldset>
-          </form>
-          <form>
-            <fieldset>
-              <button id = "index">Get all games</button>
-            </fieldset>
-          </form>
-          <form>
-            <fieldset>
-              <button id = "create">Start game</button>
-            </fieldset>
-          </form>
-          <form>
-            <fieldset>
-              <button id = "show">Show game</button>
             </fieldset>
           </form>
     </body>

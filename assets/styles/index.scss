@@ -1,23 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+h1 {
+  background: $pink;
+  text-align: center;
 }
 
 form {
   margin: 20px;
 }
 
-.box {
-  align-items: center;
-  border: 2px solid $black;
+.col-4 {
+  border: 1px solid $black;
   display: flex;
+  font-size: 20px;
   height: 50px;
   justify-content: center;
-}
-
-#index {
-  margin: 50px;
+  width: 50px;
 }

@@ -12,75 +12,79 @@ const addGameEngineHandlers = function () {
   $('#8').on('click', onClickBox)
 }
 
-let currentPlayer
+let board = ['', '', '', '', '', '', '', '', '']
+
+// [0, 1, 2], [3, 4, 5], [6, 7, 8] rows
+// [0, 3, 6], [1, 4, 7], [2, 5, 8] columns
+// [0, 4, 8], [2, 4, 6] diagonals
+
+let gameOver = false
+let currentPlayer = 'O'
 
 const switchPlayers = function () {
-  if (!currentPlayer) {
+  if (currentPlayer === 'O') {
     currentPlayer = 'X'
   } else if (currentPlayer === 'X') {
     currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
   }
 }
 
 const onClickBox = function (event) {
   event.preventDefault()
   if (!this.innerHTML) {
-    checkForWinner()
+    $('#message').text(`${currentPlayer} player turn`)
     switchPlayers()
     this.innerHTML = currentPlayer
     const getUserInput = this.id
     board[getUserInput] = this.innerHTML
+    checkForWinner()
+    checkIfDraw()
   } else {
     $('#message').text('This space is taken')
     console.log('This space is taken')
   }
 }
 
-const board = ['', '', '', '', '', '', '', '', '']
-
-// [0, 1, 2], [3, 4, 5], [6, 7, 8] rows
-// [0, 3, 6], [1, 4, 7], [2, 5, 8] columns
-// [0, 4, 8], [2, 4, 6] diagonals
-
 const checkWinnerPositions = function (boxOne, boxTwo, boxThree) {
-  if ((boxOne === boxTwo) && (boxTwo === boxThree) && (boxThree === currentPlayer)) {
-    return 'True'
+  if ((boxOne === boxTwo) && (boxOne === boxThree) && (boxOne === currentPlayer)) {
+    return true
   } else {
-    return 'False'
+    return false
   }
 }
 
 const checkRows = function () {
-  for (let i = 0; i < board.length; i = +3) {
-    if (checkWinnerPositions(board[i], board[i + 1], board[i + 2]) === 'True') {
+  for (let i = 0; i < 7; i = i + 3) {
+    if (checkWinnerPositions(board[i], board[i + 1], board[i + 2])) {
       console.log(`${currentPlayer} won!`)
-      $('#message').text(`${currentPlayer} player won!`)
+      $('#message').text(`${currentPlayer} PLAYER WON!`)
+      gameOver = true
     } else {
-      return
+      return false
     }
   }
 }
 
 const checkColumns = function () {
   for (let i = 0; i < 3; i++) {
-    if (checkWinnerPositions(board[i], board[i + 3], board[i + 6]) === 'True') {
+    if (checkWinnerPositions(board[i], board[i + 3], board[i + 6])) {
       console.log(`${currentPlayer} won!`)
-      $('#message').text(`${currentPlayer} player won!`)
+      $('#message').text(`${currentPlayer} PLAYER WON!`)
+      gameOver = true
     } else {
-      return
+      return false
     }
   }
 }
 
 const checkDiagonals = function () {
-  if (checkWinnerPositions(board[0], board[4], board[8]) === 'True') {
+  if (checkWinnerPositions(board[0], board[4], board[8])) {
     console.log(`${currentPlayer} won!`)
-    $('#message').text(`${currentPlayer} player won!`)
-  } else if (checkWinnerPositions(board[2], board[4], board[6]) === 'True') {
+  } else if (checkWinnerPositions(board[2], board[4], board[6])) {
     console.log(`${currentPlayer} won!`)
-    $('#message').text(`${currentPlayer} player won!`)
+    $('#message').text(`${currentPlayer} PLAYER WON!`)
+  } else {
+    return false
   }
 }
 
@@ -88,6 +92,13 @@ const checkForWinner = function () {
   checkRows()
   checkColumns()
   checkDiagonals()
+}
+
+const checkIfDraw = function () {
+  if (!board.includes('')) {
+    console.log('DRAW!')
+    $('#message').text('DRAW!')
+  }
 }
 
 console.log(board)

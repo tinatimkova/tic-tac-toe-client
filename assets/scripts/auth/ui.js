@@ -14,6 +14,12 @@ const onSignInSuccess = function (response) {
   $('#message').text('Successfully signed in!')
   store.user = response.user
   console.log(response)
+  $('#sign-up').hide()
+  $('#sign-in').hide()
+  $('#change-password').show()
+  $('#sign-out').show()
+  $('#create').show()
+  $('#reset').show()
 }
 
 const onSignInFailure = function () {
@@ -33,6 +39,9 @@ const onSignOutSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   store.user = null
+  $('#create').hide()
+  $('#show').hide()
+  $('')
 }
 
 const onSignOutFailure = function () {

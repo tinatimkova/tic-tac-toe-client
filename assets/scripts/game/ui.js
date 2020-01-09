@@ -17,7 +17,11 @@ const onCreateGameSuccess = function (response) {
   console.log(response)
   // store.user = response.user
   store.game = response.game
-  $('#message').text('New game was created!')
+  $('.gameboard').show()
+  $('#message').text('')
+  $('#change-password').hide()
+  $('#show').show()
+  $('#index').show()
 }
 
 const onCreateGameFailure = function (error) {

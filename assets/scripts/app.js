@@ -10,6 +10,13 @@ const gameEngineEvents = require('./game/game_engine.js')
 // require('./example')
 
 $(() => {
+  $('#change-password').hide()
+  $('#sign-out').hide()
+  $('#index').hide()
+  $('#create').hide()
+  $('#show').hide()
+  $('.gameboard').hide()
+  $('#reset').hide()
   // your JS code goes here
   authEvents.addHandlers()
   gameEvents.addGameHandlers()
