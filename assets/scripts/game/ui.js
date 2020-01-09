@@ -15,7 +15,8 @@ const onIndexFailure = function (error) {
 
 const onCreateGameSuccess = function (response) {
   console.log(response)
-  store.user = response.user
+  // store.user = response.user
+  store.game = response.game
   $('#message').text('New game was created!')
 }
 
@@ -24,9 +25,22 @@ const onCreateGameFailure = function (error) {
   $('#message').text('Something went wrong here...')
 }
 
+const onShowGameSuccess = function (response) {
+  console.log(response)
+  // store.user = response.user
+  $('#message').text("The game's shown!")
+}
+
+const onShowGameFailure = function (error) {
+  console.error(error)
+  $('#message').text('Something went wrong here...')
+}
+
 module.exports = {
   onIndexSuccess,
   onIndexFailure,
   onCreateGameSuccess,
-  onCreateGameFailure
+  onCreateGameFailure,
+  onShowGameSuccess,
+  onShowGameFailure
 }
