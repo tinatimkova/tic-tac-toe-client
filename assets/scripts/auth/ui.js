@@ -11,7 +11,7 @@ const onSignUpFailure = function () {
 }
 
 const onSignInSuccess = function (response) {
-  $('#message').text('Successfully signed in!')
+  $('#message').text('Successfully signed in')
   store.user = response.user
   console.log(response)
   $('#sign-up').hide()
@@ -19,7 +19,6 @@ const onSignInSuccess = function (response) {
   $('#change-password').show()
   $('#sign-out').show()
   $('#create').show()
-  $('#reset').show()
 }
 
 const onSignInFailure = function () {
@@ -35,13 +34,16 @@ const changePasswordFailure = function () {
 }
 
 const onSignOutSuccess = function (response) {
+  store.user = null
   $('#message').text('Successfully signed out!')
   $('#message').removeClass()
   $('#message').addClass('success')
-  store.user = null
   $('#create').hide()
   $('#show').hide()
-  $('')
+  $('#reset').hide()
+  $('.gameboard').hide()
+  $('#sign-up').show()
+  $('#sign-in').show()
 }
 
 const onSignOutFailure = function () {

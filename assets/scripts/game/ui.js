@@ -5,7 +5,7 @@ const store = require('./../store')
 const onIndexSuccess = function (response) {
   console.log(response)
   store.user = response.user
-  $('#message').text("You've got all the user's game!")
+  $('#message').text("All user's game!")
 }
 
 const onIndexFailure = function (error) {
@@ -22,6 +22,8 @@ const onCreateGameSuccess = function (response) {
   $('#change-password').hide()
   $('#show').show()
   $('#index').show()
+  $('#reset').show()
+  $('#create').hide()
 }
 
 const onCreateGameFailure = function (error) {
@@ -32,12 +34,23 @@ const onCreateGameFailure = function (error) {
 const onShowGameSuccess = function (response) {
   console.log(response)
   // store.user = response.user
-  $('#message').text("The game's shown!")
+  $('#message').text('Show the game!')
 }
 
 const onShowGameFailure = function (error) {
   console.error(error)
   $('#message').text('Something went wrong here...')
+}
+
+const onUpdateGameSuccess = function (response) {
+  // store.user = response.user
+  // store.game = response.game
+  console.log(response)
+}
+
+const onUpdateGameFailure = function (error) {
+  console.error(error)
+  $('#message').text('Something went wrong!')
 }
 
 module.exports = {
@@ -46,5 +59,7 @@ module.exports = {
   onCreateGameSuccess,
   onCreateGameFailure,
   onShowGameSuccess,
-  onShowGameFailure
+  onShowGameFailure,
+  onUpdateGameSuccess,
+  onUpdateGameFailure
 }

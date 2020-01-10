@@ -1,11 +1,13 @@
 
 const api = require('./api')
 const ui = require('./ui')
+// const store = require('../store')
 
 const addGameHandlers = function () {
   $('#index').on('click', onGetGames)
   $('#create').on('click', onCreateGame)
   $('#show').on('click', onShowGame)
+  $('.gameboard .col-4').on('click', onUpdateGameState)
 }
 
 const onGetGames = function (event) {
@@ -27,6 +29,14 @@ const onShowGame = function (event) {
   api.showGame()
     .then(ui.onShowGameSuccess)
     .catch(ui.onShowGameFailure)
+}
+
+const onUpdateGameState = function (event) {
+  event.preventDefault()
+  const data = event.target
+  api.updateGameState(data)
+    .then(ui.onUpdateGameSuccess)
+    .catch(ui.onUpdateGameFailure)
 }
 
 module.exports = {
