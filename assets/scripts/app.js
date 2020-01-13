@@ -15,7 +15,7 @@ $(() => {
   $('#index').hide()
   $('#create').hide()
   $('#show').hide()
-  $('.gameboard').hide()
+  // $('.gameboard').hide()
   $('#reset').hide()
   // your JS code goes here
   authEvents.addHandlers()

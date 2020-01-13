@@ -35,8 +35,8 @@ const showGame = function (data) {
   })
 }
 
-const updateGameState = function (data) {
-  console.log(data)
+const updateGameState = function (index, value, over) {
+  console.log(index, value, over)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
@@ -46,10 +46,10 @@ const updateGameState = function (data) {
     data: {
       'game': {
         'cell': {
-          'index': $(data).attr('data-cell-index'),
-          'value': store.player
+          'index': index,
+          'value': value
         },
-        'over': store.over
+        'over': over
       }
     }
   })

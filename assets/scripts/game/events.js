@@ -1,7 +1,7 @@
 
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('../store')
+const store = require('../store')
 
 const addGameHandlers = function () {
   $('#index').on('click', onGetGames)
@@ -33,8 +33,10 @@ const onShowGame = function (event) {
 
 const onUpdateGameState = function (event) {
   event.preventDefault()
-  const data = event.target
-  api.updateGameState(data)
+  const index = $(this).attr('data-cell-index')
+  store.game.over = store.gameIsOver
+  const over = store.game.over
+  api.updateGameState(index, store.player, over)
     .then(ui.onUpdateGameSuccess)
     .catch(ui.onUpdateGameFailure)
 }

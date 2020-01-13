@@ -3,9 +3,8 @@
 const store = require('./../store')
 
 const onIndexSuccess = function (response) {
-  console.log(response)
   store.user = response.user
-  $('#message').text("All user's game!")
+  $('#message').text(`You played ${response.games.length} games!`)
 }
 
 const onIndexFailure = function (error) {
