@@ -1,5 +1,7 @@
 'use strict'
 const store = require('../store')
+const ui = require('./ui')
+const api = require('./api')
 
 const addGameEngineHandlers = function () {
   $('.col-4').on('click', onClickBox)
@@ -8,14 +10,14 @@ const addGameEngineHandlers = function () {
 
 const board = ['', '', '', '', '', '', '', '', '']
 
-let currentPlayer
+store.gameIsOver = false
 
 const switchPlayers = function () {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
+  if (store.currentPlayer === 'X') {
+    store.currentPlayer = 'O'
     $('#message').text("X player's turn")
   } else {
-    currentPlayer = 'X'
+    store.currentPlayer = 'X'
     $('#message').text("O player's turn")
   }
 }
@@ -25,11 +27,14 @@ const onClickBox = function (event) {
   if (!store.gameIsOver) {
     if (!this.innerHTML) {
       switchPlayers()
-      this.innerHTML = currentPlayer
-      const getUserInput = $(this).attr('data-cell-index')
-      board[getUserInput] = this.innerHTML
+      this.innerHTML = store.currentPlayer
+      store.userInput = $(this).attr('data-cell-index')
+      board[store.userInput] = this.innerHTML
       checkForWinner()
       checkIfDraw()
+      api.updateGameState(store.userInput, store.currentPlayer, store.gameIsOver)
+        .then(ui.onUpdateGameSuccess)
+        .catch(ui.onUpdateGameFailure)
     } else {
       $('#message').text('This space is taken')
     }
@@ -77,7 +82,7 @@ const checkForWinner = function () {
   checkColumns()
   checkDiagonals()
   if (store.gameIsOver) {
-    $('#message').text(`${currentPlayer} PLAYER WON!`)
+    $('#message').text(`${store.currentPlayer} PLAYER WON!`)
     $('.col-4').off('click')
   }
 }

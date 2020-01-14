@@ -35,7 +35,7 @@ const showGame = function (data) {
   })
 }
 
-const updateGameState = function (index, value, over) {
+const updateGameState = function (index = store.userInput, value = store.currentPlayer, over = store.gameIsOver) {
   console.log(index, value, over)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
