@@ -3,7 +3,6 @@
 const store = require('./../store')
 
 const onIndexSuccess = function (response) {
-  store.game = response.game
   $('#message').text(`You played ${response.games.length} games!`)
 }
 
@@ -31,7 +30,12 @@ const onCreateGameFailure = function (error) {
 
 const onShowGameSuccess = function (response) {
   console.log(response)
-  $('#message').text('Show the game!')
+  const moves = store.board.filter(cell => cell !== '').length
+  if (!store.gameIsOver) {
+    $('#message').text(`Game status: game is on! \n Number of moves: ${moves}.`)
+  } else {
+    $('#message').text(`Game status: game is over. \n ${store.currentPlayer} player won!\n Number of moves: ${moves}`)
+  }
 }
 
 const onShowGameFailure = function (error) {
@@ -40,7 +44,12 @@ const onShowGameFailure = function (error) {
 }
 
 const onUpdateGameSuccess = function (response) {
-  console.log(response)
+  if (store.currentPlayer === 'O') {
+    $('#message').text("X player's turn")
+  } else if (store.currentPlayer === 'X') {
+    $('#message').text("O player's turn")
+  }
+  // console.log(response)
 }
 
 const onUpdateGameFailure = function (error) {

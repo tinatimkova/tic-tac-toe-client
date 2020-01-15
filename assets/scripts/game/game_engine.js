@@ -14,10 +14,8 @@ store.gameIsOver = false
 const switchPlayers = function () {
   if (store.currentPlayer === 'X') {
     store.currentPlayer = 'O'
-    $('#message').text("X player's turn")
   } else {
     store.currentPlayer = 'X'
-    $('#message').text("O player's turn")
   }
 }
 
