@@ -3,7 +3,7 @@
 const store = require('./../store')
 
 const onIndexSuccess = function (response) {
-  store.user = response.user
+  store.game = response.game
   $('#message').text(`You played ${response.games.length} games!`)
 }
 
@@ -14,10 +14,9 @@ const onIndexFailure = function (error) {
 
 const onCreateGameSuccess = function (response) {
   console.log(response)
-  // store.user = response.user
   store.game = response.game
+  $('#message').text("X player's turn")
   $('.gameboard').show()
-  $('#message').text('')
   $('#change-password').hide()
   $('#show').show()
   $('#index').show()
@@ -32,7 +31,6 @@ const onCreateGameFailure = function (error) {
 
 const onShowGameSuccess = function (response) {
   console.log(response)
-  // store.user = response.user
   $('#message').text('Show the game!')
 }
 
@@ -42,12 +40,24 @@ const onShowGameFailure = function (error) {
 }
 
 const onUpdateGameSuccess = function (response) {
-  // store.user = response.user
-  // store.game = response.game
   console.log(response)
 }
 
 const onUpdateGameFailure = function (error) {
+  console.error(error)
+  $('#message').text('Something went wrong!')
+}
+
+const onResetGameSuccess = function (response) {
+  console.log(response)
+  store.game = response.game
+  $('.col-4').empty()
+  store.gameIsOver = false
+  store.board = ['', '', '', '', '', '', '', '', '']
+  $('#message').text("X player's turn")
+}
+
+const onResetGameFailure = function (error) {
   console.error(error)
   $('#message').text('Something went wrong!')
 }
@@ -60,5 +70,7 @@ module.exports = {
   onShowGameSuccess,
   onShowGameFailure,
   onUpdateGameSuccess,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  onResetGameSuccess,
+  onResetGameFailure
 }

@@ -53,6 +53,7 @@ const onSignOutSuccess = function (response) {
 
 const onSignOutFailure = function () {
   $('#message').text('Sign out failed!')
+  $('form').trigger('reset')
 }
 
 module.exports = {

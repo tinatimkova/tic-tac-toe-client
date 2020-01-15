@@ -6,6 +6,7 @@ const addGameHandlers = function () {
   $('#index').on('click', onGetGames)
   $('#create').on('click', onCreateGame)
   $('#show').on('click', onShowGame)
+  $('#reset').on('submit', onResetGameBoard)
 }
 
 const onGetGames = function (event) {
@@ -27,6 +28,13 @@ const onShowGame = function (event) {
   api.showGame()
     .then(ui.onShowGameSuccess)
     .catch(ui.onShowGameFailure)
+}
+
+const onResetGameBoard = function (event) {
+  event.preventDefault()
+  api.createGame()
+    .then(ui.onResetGameSuccess)
+    .catch(ui.onResetGameFailure)
 }
 
 module.exports = {

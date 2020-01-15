@@ -5,10 +5,9 @@ const api = require('./api')
 
 const addGameEngineHandlers = function () {
   $('.col-4').on('click', onClickBox)
-  $('#reset').on('submit', onResetGameBoard)
 }
 
-const board = ['', '', '', '', '', '', '', '', '']
+store.board = ['', '', '', '', '', '', '', '', '']
 
 store.gameIsOver = false
 
@@ -29,7 +28,7 @@ const onClickBox = function (event) {
       switchPlayers()
       this.innerHTML = store.currentPlayer
       store.userInput = $(this).attr('data-cell-index')
-      board[store.userInput] = this.innerHTML
+      store.board[store.userInput] = this.innerHTML
       checkForWinner()
       checkIfDraw()
       api.updateGameState(store.userInput, store.currentPlayer, store.gameIsOver)
@@ -50,29 +49,29 @@ const checkWinnerPositions = function (boxOne, boxTwo, boxThree) {
 }
 
 const checkRows = function () {
-  if (checkWinnerPositions(board[0], board[1], board[2])) {
+  if (checkWinnerPositions(store.board[0], store.board[1], store.board[2])) {
     store.gameIsOver = true
-  } else if (checkWinnerPositions(board[3], board[4], board[5])) {
+  } else if (checkWinnerPositions(store.board[3], store.board[4], store.board[5])) {
     store.gameIsOver = true
-  } else if (checkWinnerPositions(board[6], board[7], board[8])) {
+  } else if (checkWinnerPositions(store.board[6], store.board[7], store.board[8])) {
     store.gameIsOver = true
   }
 }
 
 const checkColumns = function () {
-  if (checkWinnerPositions(board[0], board[3], board[6])) {
+  if (checkWinnerPositions(store.board[0], store.board[3], store.board[6])) {
     store.gameIsOver = true
-  } else if (checkWinnerPositions(board[1], board[4], board[7])) {
+  } else if (checkWinnerPositions(store.board[1], store.board[4], store.board[7])) {
     store.gameIsOver = true
-  } else if (checkWinnerPositions(board[2], board[5], board[8])) {
+  } else if (checkWinnerPositions(store.board[2], store.board[5], store.board[8])) {
     store.gameIsOver = true
   }
 }
 
 const checkDiagonals = function () {
-  if (checkWinnerPositions(board[0], board[4], board[8])) {
+  if (checkWinnerPositions(store.board[0], store.board[4], store.board[8])) {
     store.gameIsOver = true
-  } else if (checkWinnerPositions(board[2], board[4], board[6])) {
+  } else if (checkWinnerPositions(store.board[2], store.board[4], store.board[6])) {
     store.gameIsOver = true
   }
 }
@@ -83,24 +82,17 @@ const checkForWinner = function () {
   checkDiagonals()
   if (store.gameIsOver) {
     $('#message').text(`${store.currentPlayer} PLAYER WON!`)
-    $('.col-4').off('click')
   }
 }
 
 const checkIfDraw = function () {
-  if (!board.includes('') && (!store.gameIsOver)) {
+  if (!store.board.includes('') && (!store.gameIsOver)) {
     $('#message').text('DRAW!')
     store.gameIsOver = true
-    $('.col-4').off('click')
   }
 }
 
-const onResetGameBoard = function (event) {
-  event.preventDefault()
-  // resetGameBoard()
-}
-
-console.log(board)
+console.log(store.board)
 
 module.exports = {
   addGameEngineHandlers
