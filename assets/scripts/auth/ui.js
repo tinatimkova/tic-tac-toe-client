@@ -13,7 +13,6 @@ const onSignUpFailure = function () {
 }
 
 const onSignInSuccess = function (response) {
-  $('#message').text('Successfully signed in')
   store.user = response.user
   console.log(response)
   $('#sign-up').hide()

@@ -1,27 +1,42 @@
 @import '~bootstrap/scss/bootstrap';
+$grid-color: #fff;
+$grid-base-color: #C0C0C0;
+$heading-background-color: #CD5C5C;
 
-h1 {
-  background: $pink;
+
+h1, h3 {
   text-align: center;
+}
+h1 {
+  background: $heading-background-color;
 }
 
 form {
   margin: 20px;
 }
 
-.container {
-  .col-4 {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid $black;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    align-items: center;
+.row {
+    display: grid;
     justify-content: center;
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: 50px 50px 10px;
+    grid-gap: 5%;
+    background-color: $grid-color;
+    color: $grid-base-color;
   }
-}
 
-h3 {
-  text-align: center;
-}
+.col-4 {
+  background-color: $grid-base-color;
+  color: $grid-color;
+  margin: 5px;
+  width: 100px;
+  height: 100px;
+  max-width: 100px !important;
+  /*padding: 50px;*/
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: center;
+  background-color: #CD5C5C;
+  text-align:center;
+  line-height:100px;
+  }

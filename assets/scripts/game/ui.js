@@ -44,10 +44,12 @@ const onShowGameFailure = function (error) {
 }
 
 const onUpdateGameSuccess = function (response) {
-  if (store.currentPlayer === 'O') {
-    $('#message').text("X player's turn")
-  } else if (store.currentPlayer === 'X') {
-    $('#message').text("O player's turn")
+  if (!store.gameIsOver) {
+    if (store.currentPlayer === 'O') {
+      $('#message').text("X player's turn")
+    } else if (store.currentPlayer === 'X') {
+      $('#message').text("O player's turn")
+    }
   }
   // console.log(response)
 }
