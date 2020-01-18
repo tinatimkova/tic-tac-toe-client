@@ -1,17 +1,31 @@
+$font-family-base: 'Indie Flower', cursive;
 @import '~bootstrap/scss/bootstrap';
-$grid-color: #fff;
-$grid-base-color: #C0C0C0;
-$heading-background-color: #CD5C5C;
+$heading-background-color: #2f3c7e;
+$body-background: #fdebed;
 
-
-h1, h3 {
-  text-align: center;
+body {
+  background-color: $body-background;
 }
+
+h3 {
+  text-align: center;
+  margin: 20px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 h1 {
+  color: $body-background;
+  padding: 10px;
+  font-size: 3em;
+  font-weight: bold;
   background: $heading-background-color;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 form {
+  color: $heading-background-color;
   margin: 20px;
 }
 
@@ -21,22 +35,18 @@ form {
     grid-template-columns: 60px 60px 60px;
     grid-template-rows: 50px 50px 10px;
     grid-gap: 5%;
-    background-color: $grid-color;
-    color: $grid-base-color;
+    margin-right: auto !important;
   }
 
 .col-4 {
-  background-color: $grid-base-color;
-  color: $grid-color;
-  margin: 5px;
+  background-color: $heading-background-color;
+  color: $body-background;
   width: 100px;
   height: 100px;
   max-width: 100px !important;
-  /*padding: 50px;*/
   font-size: 30px;
   font-weight: bold;
   justify-content: center;
-  background-color: #CD5C5C;
-  text-align:center;
-  line-height:100px;
+  text-align: center;
+  line-height: 100px;
   }

@@ -40,14 +40,17 @@ const changePasswordFailure = function () {
 
 const onSignOutSuccess = function (response) {
   store.user = null
+  store.game = null
+  $('.col-4').empty()
   $('#message').text('')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  // $('#message').removeClass()
+  // $('#message').addClass('success')
   $('#create').hide()
   $('#show').hide()
   $('#reset').hide()
   $('.gameboard').hide()
   $('#sign-out').hide()
+  $('#change-password').hide()
   $('#index').hide()
   $('#sign-up').show()
   $('#sign-in').show()

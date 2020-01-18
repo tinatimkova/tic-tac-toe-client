@@ -6,13 +6,11 @@ const onIndexSuccess = function (response) {
   $('#message').text(`You played ${response.games.length} games!`)
 }
 
-const onIndexFailure = function (error) {
-  console.error(error)
+const onIndexFailure = function () {
   $('#message').text('Something went wrong here...')
 }
 
 const onCreateGameSuccess = function (response) {
-  console.log(response)
   store.game = response.game
   $('#message').text("X player's turn")
   $('.gameboard').show()
@@ -23,13 +21,11 @@ const onCreateGameSuccess = function (response) {
   $('#create').hide()
 }
 
-const onCreateGameFailure = function (error) {
-  console.error(error)
+const onCreateGameFailure = function () {
   $('#message').text('Something went wrong here...')
 }
 
 const onShowGameSuccess = function (response) {
-  console.log(response)
   const moves = store.board.filter(cell => cell !== '').length
   if (!store.gameIsOver) {
     $('#message').text(`Game status: game is on! \n Number of moves: ${moves}.`)
@@ -38,8 +34,7 @@ const onShowGameSuccess = function (response) {
   }
 }
 
-const onShowGameFailure = function (error) {
-  console.error(error)
+const onShowGameFailure = function () {
   $('#message').text('Something went wrong here...')
 }
 
@@ -51,16 +46,13 @@ const onUpdateGameSuccess = function (response) {
       $('#message').text("O player's turn")
     }
   }
-  // console.log(response)
 }
 
-const onUpdateGameFailure = function (error) {
-  console.error(error)
+const onUpdateGameFailure = function () {
   $('#message').text('Something went wrong!')
 }
 
 const onResetGameSuccess = function (response) {
-  console.log(response)
   store.game = response.game
   $('.col-4').empty()
   store.gameIsOver = false
@@ -68,8 +60,7 @@ const onResetGameSuccess = function (response) {
   $('#message').text("X player's turn")
 }
 
-const onResetGameFailure = function (error) {
-  console.error(error)
+const onResetGameFailure = function () {
   $('#message').text('Something went wrong!')
 }
 
