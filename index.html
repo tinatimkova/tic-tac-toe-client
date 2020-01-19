@@ -32,39 +32,33 @@
         </div>
       </div>
           <h3 id='message'></h3>
+          <h3 id='sign-up-message'></h3>
               <form id="sign-up">
                 <fieldset>
                   <legend>Sign up</legend>
                   <input name="credentials[email]" type='email' placeholder='Email'/>
                   <input name="credentials[password]" type='password' placeholder='Password'/>
                   <input name="credentials[password_confirmation]" type='password' placeholder='Password Confirmation'/>
-                  <input type='submit' value='Sign up'/>
+                  <button type='submit'>Sign up</button>
                 </fieldset>
               </form>
+          <form>
+          <fieldset>
+              <button id ="create">Start game</button>
+          </fieldset>
+          </form>
+          <h3 id='message-sign-in'></h3>
             <form id="sign-in">
                 <fieldset>
                   <legend>Sign in</legend>
                   <input name="credentials[email]" type='email' placeholder='Email'/>
                   <input name="credentials[password]" type='password' placeholder='Password'/>
-                  <input type='submit' value='Sign in'/>
+                  <button type='submit'>Sign in</button>
                 </fieldset>
             </form>
-            <form>
-              <fieldset>
-                <button id = "create">Start game</button>
-              </fieldset>
-            </form>
             <form id='reset'>
-              <input type='submit' value='Reset'/>
+              <button type='submit'>Start new game</button>
             </form>
-            <form id="change-password">
-              <fieldset>
-                <legend>Change Password</legend>
-                <input name="passwords[old]" type='password' placeholder='Old Password'/>
-                <input name="passwords[new]" type='password' placeholder='New Password'/>
-                <input type='submit' value='Update'/>
-             </fieldset>
-           </form>
            <form>
              <fieldset>
                <button id = "show">Show game</button>
@@ -75,9 +69,18 @@
                <button id = "index">Get all user games</button>
              </fieldset>
            </form>
+           <h3 id='message-password'></h3>
+           <form id="change-password">
+             <fieldset>
+               <legend>Change Password</legend>
+               <input name="passwords[old]" type='password' placeholder='Old Password'/>
+               <input name="passwords[new]" type='password' placeholder='New Password'/>
+               <button type='submit'>Update</button>
+            </fieldset>
+          </form>
            <form id="sign-out">
              <fieldset>
-               <input type='submit' value='Sign out'/>
+               <button type='submit' class="btn btn-outline-secondary">Log out</button>
             </fieldset>
           </form>
     </body>

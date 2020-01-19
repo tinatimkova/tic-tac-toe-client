@@ -2,6 +2,8 @@ $font-family-base: 'Indie Flower', cursive;
 @import '~bootstrap/scss/bootstrap';
 $heading-background-color: #2f3c7e;
 $body-background: #fdebed;
+$error-message: red;
+$button-color: #fff;
 
 body {
   background-color: $body-background;
@@ -26,7 +28,8 @@ h1 {
 
 form {
   color: $heading-background-color;
-  margin: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .row {
@@ -50,3 +53,30 @@ form {
   text-align: center;
   line-height: 100px;
   }
+
+legend {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+button {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: $button-color;
+  background-color: $heading-background-color;
+  border: 2px solid $heading-background-color;
+  padding: 7px 30px;
+  outline: none !important;
+  border-radius: 5px;
+}
+
+.btn {
+  font-size: 1.2em;
+  font-weight: bold;
+  border-width: 2px;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+}

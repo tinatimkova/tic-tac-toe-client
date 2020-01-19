@@ -3,7 +3,11 @@
 const store = require('./../store')
 
 const onIndexSuccess = function (response) {
-  $('#message').text(`You played ${response.games.length} games!`)
+  if (response.games.length === 1) {
+    $('#message').text(`You played ${response.games.length} game!`)
+  } else {
+    $('#message').text(`You played ${response.games.length} games!`)
+  }
 }
 
 const onIndexFailure = function () {

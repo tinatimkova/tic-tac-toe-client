@@ -3,48 +3,67 @@
 const store = require('./../store')
 
 const onSignUpSuccess = function (response) {
-  $('#message').text('Successfully signed up!')
-  $('form').trigger('reset')
+  $('#sign-up-message').html('Successfully signed up!').css({'color': 'green', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#sign-up-message').html('')
+  }, 1000)
+  $('#sign-up')[0].reset()
 }
 
 const onSignUpFailure = function () {
-  $('#message').text('Sign up failed!')
-  $('form').trigger('reset')
+  $('#message').text('Sign up failed!').css({'color': 'red', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message').text('')
+  }, 1000)
+  $('#sign-up')[0].reset()
 }
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  console.log(response)
+  $('#message-sign-in').text('Successfully signed in!').css({'color': 'green', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message-sign-in').empty()
+  }, 1000)
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#change-password').show()
   $('#sign-out').show()
   $('#create').show()
-  $('form').trigger('reset')
+  $('#sign-in')[0].reset()
 }
 
 const onSignInFailure = function () {
-  $('#message').text('Sign in failed!')
-  $('form').trigger('reset')
+  $('#message-sign-in').text('Sign in failed!').css({'color': 'red', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message-sign-in').text('')
+  }, 1000)
+  $('#sign-in')[0].reset()
 }
 
 const changePasswordSuccess = function (response) {
-  $('#message').text('Your password was successfully updated!')
-  $('form').trigger('reset')
+  $('#message-password').text('Your password has been successfully updated!').css({'color': 'green', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message-password').text('')
+  }, 1000)
+  $('#change-password')[0].reset()
 }
 
 const changePasswordFailure = function () {
-  $('#message').text('Change password failed!')
-  $('form').trigger('reset')
+  $('#message-password').text('Password Reset Failed!').css({'color': 'red', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message-password').text('')
+  }, 1000)
+  $('#change-password')[0].reset()
 }
 
 const onSignOutSuccess = function (response) {
   store.user = null
   store.game = null
   $('.col-4').empty()
-  $('#message').text('')
-  // $('#message').removeClass()
-  // $('#message').addClass('success')
+  $('#message').text('Successfully Sign Out!').css({'color': 'green', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message').empty()
+  }, 1000)
   $('#create').hide()
   $('#show').hide()
   $('#reset').hide()
@@ -57,7 +76,10 @@ const onSignOutSuccess = function (response) {
 }
 
 const onSignOutFailure = function () {
-  $('#message').text('Sign out failed!')
+  $('#message').text('Sign out failed!').css({'color': 'red', 'font-size': '1.5em'})
+  setTimeout(function () {
+    $('#message').text('')
+  }, 1000)
 }
 
 module.exports = {
