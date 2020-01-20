@@ -20,7 +20,7 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
-  console.log(data)
+  // console.log(data)
 }
 
 const onSignIn = function (event) {
@@ -33,7 +33,6 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
-  console.log(data)
 }
 
 const onChangePassword = function (event) {
@@ -46,7 +45,6 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
-  console.log(data)
 }
 
 const onSignOut = function (event) {
@@ -59,7 +57,6 @@ const onSignOut = function (event) {
   api.signOut(data)
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
-  console.log(data)
 }
 
 module.exports = {

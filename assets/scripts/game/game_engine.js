@@ -90,8 +90,6 @@ const checkIfDraw = function () {
   }
 }
 
-console.log(store.board)
-
 module.exports = {
   addGameEngineHandlers
 }
