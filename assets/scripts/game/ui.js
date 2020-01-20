@@ -15,14 +15,17 @@ const onIndexFailure = function () {
 }
 
 const onCreateGameSuccess = function (response) {
-  store.game = response.game
-  $('#message').text("X player's turn")
+  $('#message').text("X player's turn").css('color', 'black')
   $('.gameboard').show()
   $('#change-password').hide()
   $('#show').show()
   $('#index').show()
   $('#reset').show()
   $('#create').hide()
+  $('.col-4').empty()
+  store.game = response.game
+  store.gameIsOver = false
+  store.board = ['', '', '', '', '', '', '', '', '']
 }
 
 const onCreateGameFailure = function () {
